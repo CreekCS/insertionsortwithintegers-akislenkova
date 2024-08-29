@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 public class InsSortInt {
-   public static void main(String[] args) throws FileNotFoundException{
+   public static void main(String[] args){
+        try{
             File myFile = new File("randInts.txt");
             Scanner reader = new Scanner(myFile);
             ArrayList<String> ints = new ArrayList<String>(1000);
@@ -11,6 +12,10 @@ public class InsSortInt {
                     ints.add(reader.nextLine());
                 }
                 reader.close();
+                int n = ints.size();
+        }
+        catch(FileNotFoundException e){
+            ArrayList<String> ints = new ArrayList<String>(1000);
             int n = ints.size();
             int[] sortedInts = new int[n];
             for(int i=0; i<n; i++){
@@ -22,8 +27,10 @@ public class InsSortInt {
                         sortedInts[j+1] = key;
                 }
             }
-            System.out.println(sortedInts[0]);
-            System.out.println(sortedInts[999]);
+        System.out.println("Smallest: " + sortedInts[0]);
+        System.out.println("Largest: " + sortedInts[999]);
+        }
+        
         }
         
     }
